@@ -1,0 +1,209 @@
+@import '../styles/tokens.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans-stack);
+  font-size: var(--text-body-md);
+  color: var(--color-brand);
+  background-color: var(--color-warm-white);
+}
+
+img, video, canvas, svg { max-width: 100%; height: auto; display: block; }
+
+/* Prevent flex/grid children from overflowing their containers */
+main > *, section > *, article > * { min-width: 0; }
+.flex > *, .grid > * { min-width: 0; }
+button, a, input, textarea, select { min-width: 0; }
+button, a { word-break: break-word; }
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar              { width: 6px; height: 6px; }
+::-webkit-scrollbar-track        { background: var(--color-warm-white); }
+::-webkit-scrollbar-thumb        { background: var(--color-border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--color-muted); }
+
+/* ── Focus ──────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Typography Utilities ───────────────────────────────── */
+@layer utilities {
+  .font-display     { font-family: var(--font-display-stack); }
+  .font-sans-body   { font-family: var(--font-sans-stack); }
+
+  .text-hero        { font-size: var(--text-hero);       line-height: 1.05; letter-spacing: -0.02em; }
+  .text-display-lg  { font-size: var(--text-display-lg); line-height: 1.1;  letter-spacing: -0.01em; }
+  .text-display-md  { font-size: var(--text-display-md); line-height: 1.15; }
+  .text-display-sm  { font-size: var(--text-display-sm); line-height: 1.2;  }
+  .text-heading-xl  { font-size: var(--text-heading-xl); line-height: 1.3;  }
+  .text-heading-lg  { font-size: var(--text-heading-lg); line-height: 1.35; }
+  .text-body-xl     { font-size: var(--text-body-xl);    line-height: 1.6;  }
+  .text-body-lg     { font-size: var(--text-body-lg);    line-height: 1.65; }
+  .text-body-md     { font-size: var(--text-body-md);    line-height: 1.6;  }
+  .text-label       { font-size: var(--text-label);      line-height: 1.4;  letter-spacing: 0.18em; text-transform: uppercase; }
+  .text-price       { font-size: var(--text-price);      line-height: 1.2;  }
+  .text-price-sm    { font-size: var(--text-price-sm);   line-height: 1.2;  }
+
+  .container-page   {
+    max-width: var(--container-max);
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 390px) { .container-page { padding-inline: 20px; } }
+  @media (min-width: 768px) { .container-page { padding-inline: 32px; } }
+  @media (min-width: 1024px) { .container-page { padding-inline: 48px; } }
+  @media (min-width: 1280px) { .container-page { padding-inline: 64px; } }
+
+  .section-pad      { padding-block: 48px; }
+  @media (min-width: 768px) { .section-pad { padding-block: 80px; } }
+
+  .section-pad-lg   { padding-block: 64px; }
+  @media (min-width: 768px) { .section-pad-lg { padding-block: 120px; } }
+
+  /* Gradient overlays */
+  .overlay-hero     { background: linear-gradient(135deg, var(--color-overlay) 0%, transparent 60%); }
+  .overlay-tile     { background: linear-gradient(to top, rgba(26,10,0,0.65) 0%, transparent 55%); }
+  .overlay-soft     { background: linear-gradient(to top, rgba(26,10,0,0.35) 0%, transparent 60%); }
+}
+
+/* ── Component Base Styles ──────────────────────────────── */
+@layer components {
+
+  /* Button: Primary */
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background-color: var(--color-cta); color: #ffffff;
+    font-family: var(--font-sans-stack); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    height: 50px; padding-inline: 20px; border-radius: var(--radius-sm);
+    border: none; cursor: pointer; white-space: nowrap;
+    max-width: 100%;
+    transition: background-color var(--dur-fast) var(--ease-smooth),
+                transform var(--dur-fast) var(--ease-smooth),
+                box-shadow var(--dur-fast) var(--ease-smooth);
+  }
+  @media (min-width: 768px) {
+    .btn-primary { font-size: 14px; height: 54px; padding-inline: 32px; }
+  }
+  .btn-primary:hover {
+    background-color: var(--color-cta-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(196, 118, 58, 0.35);
+  }
+  .btn-primary:active { background-color: var(--color-cta-active); transform: translateY(0); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* Button: Ghost */
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: transparent; color: var(--color-brand);
+    font-family: var(--font-sans-stack); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    height: 50px; padding-inline: 20px; border-radius: var(--radius-sm);
+    border: 1.5px solid var(--color-brand); cursor: pointer; white-space: nowrap;
+    max-width: 100%;
+    transition: background-color var(--dur-fast) var(--ease-smooth),
+                color var(--dur-fast) var(--ease-smooth);
+  }
+  @media (min-width: 768px) {
+    .btn-ghost { font-size: 14px; height: 54px; padding-inline: 32px; }
+  }
+  .btn-ghost:hover { background-color: var(--color-brand); color: #ffffff; }
+  .btn-ghost:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Button: Small */
+  .btn-sm { height: 40px; padding-inline: 20px; font-size: 12px; }
+
+  /* Tag / Pill */
+  .tag {
+    display: inline-flex; align-items: center;
+    background-color: var(--color-gold); color: var(--color-brand);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    height: 22px; padding-inline: 10px; border-radius: var(--radius-pill);
+  }
+  .tag-outline {
+    background: transparent; color: var(--color-cta);
+    border: 1px solid var(--color-cta);
+  }
+
+  /* Product Card */
+  .product-card {
+    background: #ffffff; border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: transform var(--dur-normal) var(--ease-smooth),
+                box-shadow var(--dur-normal) var(--ease-smooth);
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Accordion */
+  .accordion-item { border-bottom: 1px solid var(--color-border); }
+  .accordion-trigger {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; padding-block: 22px; background: none; border: none;
+    font-family: var(--font-sans-stack); font-size: 14px; font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-brand); cursor: pointer; text-align: left;
+    transition: color var(--dur-fast);
+  }
+  .accordion-trigger:hover { color: var(--color-cta); }
+  .accordion-content { overflow: hidden; }
+
+  /* Horizontal scroll strip */
+  .h-scroll {
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 8px;
+  }
+  .h-scroll::-webkit-scrollbar { display: none; }
+  .h-scroll > * { scroll-snap-align: start; flex-shrink: 0; }
+
+  /* Editorial number prefix */
+  .num-prefix {
+    font-family: var(--font-display-stack); font-style: italic;
+    font-size: 14px; color: var(--color-cta); letter-spacing: 0.05em;
+  }
+}
+
+/* ── Trust strip marquee ───────────────────────────────── */
+@keyframes trustMarqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.trust-marquee-track {
+  animation: trustMarqueeScroll 32s linear infinite;
+}
+.trust-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Reduced Motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
