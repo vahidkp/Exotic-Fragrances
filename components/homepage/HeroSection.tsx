@@ -2,6 +2,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Star, FlaskConical, Truck } from 'lucide-react';
+
+const TRUST_ITEMS = [
+  { icon: Star, label: '4.9/5 Reviews' },
+  { icon: FlaskConical, label: '1,000+ Scents' },
+  { icon: Truck, label: 'Ships in 24h' },
+];
 
 export default function HeroSection() {
   const reduced = useReducedMotion();
@@ -33,28 +40,26 @@ export default function HeroSection() {
           sizes="100vw"
         />
       </motion.div>
-      {/* Bottom-anchored gradient — keeps top of image fully visible, darkens only the lower band where text lives */}
+      {/* Bottom-anchored gradient on mobile, left-anchored on desktop */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent md:from-black/50 md:via-transparent md:to-transparent" />
-      {/* Left-side darkening (desktop only) */}
       <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
 
-      {/* Content — bottom-anchored on both mobile and desktop */}
-      <div className="absolute inset-0 flex items-end pb-10 sm:pb-14 md:pb-24">
+      {/* Content — flex column with trust strip pinned to bottom */}
+      <div className="absolute inset-0 flex flex-col justify-end pb-6 sm:pb-8 md:pb-24">
         <div className="container-page w-full">
           <div className="max-w-[640px] w-full">
-            {/* Eyebrow */}
-            <motion.p
-              {...reveal(0.05)}
-              className="text-[10px] sm:text-[12px] tracking-[0.24em] sm:tracking-[0.32em] uppercase text-gold font-medium mb-5 sm:mb-7 flex items-center gap-2.5 sm:gap-3"
-            >
-              <span className="inline-block w-6 sm:w-8 h-px bg-gold/60" aria-hidden />
-              Pure Fragrance Oils
-            </motion.p>
+            {/* Eyebrow — text on top, full-width hairline below */}
+            <motion.div {...reveal(0.05)} className="mb-5 sm:mb-7">
+              <p className="text-[10px] sm:text-[12px] tracking-[0.28em] sm:tracking-[0.32em] uppercase text-gold font-medium mb-2.5">
+                Pure Fragrance Oils
+              </p>
+              <span className="block w-full max-w-[300px] sm:max-w-[340px] h-px bg-gold/50" aria-hidden />
+            </motion.div>
 
             {/* Headline */}
             <motion.h1
               {...reveal(0.15)}
-              className="font-display font-normal text-white leading-[1.06] tracking-[0.005em] text-[clamp(30px,8vw,60px)] uppercase mb-6 sm:mb-8"
+              className="font-display font-normal text-white leading-[1.05] tracking-[0.005em] text-[clamp(34px,9vw,60px)] uppercase mb-5 sm:mb-7"
             >
               Discover your
               <br />
@@ -64,7 +69,7 @@ export default function HeroSection() {
             {/* Description */}
             <motion.p
               {...reveal(0.3)}
-              className="text-[14px] sm:text-body-lg text-white/85 leading-[1.65] mb-8 sm:mb-10 font-light max-w-md"
+              className="text-[14px] sm:text-body-lg text-white/85 leading-[1.65] mb-7 sm:mb-10 font-light max-w-md"
             >
               Over 1,000 Grade A oils inspired by the world&apos;s greatest perfumes —
               shipped across the USA in 24 hours, below wholesale prices.
@@ -88,20 +93,31 @@ export default function HeroSection() {
                 Wholesale Enquiry →
               </Link>
             </motion.div>
-
-            {/* Trust strip */}
-            <motion.div
-              {...reveal(0.6)}
-              className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-[9px] sm:text-[10px] tracking-[0.14em] sm:tracking-[0.18em] uppercase text-white/65"
-            >
-              <span>★ 4.9/5 Reviews</span>
-              <span className="text-white/25">·</span>
-              <span>1,000+ Scents</span>
-              <span className="text-white/25">·</span>
-              <span>Ships in 24h</span>
-            </motion.div>
           </div>
         </div>
+
+        {/* Trust strip — pinned just above the bottom of the hero with icon + label + vertical dividers */}
+        <motion.div {...reveal(0.6)} className="container-page w-full mt-2 sm:mt-3 md:mt-0">
+          <div className="grid grid-cols-3 gap-0 sm:max-w-md md:max-w-lg pt-5 sm:pt-6 border-t border-white/15">
+            {TRUST_ITEMS.map(({ icon: Icon, label }, i) => (
+              <div
+                key={label}
+                className={`flex flex-col items-center text-center gap-2 sm:gap-2.5 px-1 sm:px-3 ${
+                  i > 0 ? 'border-l border-white/15' : ''
+                }`}
+              >
+                <Icon
+                  size={20}
+                  className="text-gold flex-shrink-0"
+                  strokeWidth={1.5}
+                />
+                <span className="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-white/75 font-medium leading-tight">
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
 
       {/* Editorial scroll indicator — desktop only */}

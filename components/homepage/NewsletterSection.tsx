@@ -42,14 +42,14 @@ export default function NewsletterSection() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
-              style={{ height: '56px' }}
-              className="appearance-none flex-1 w-full md:max-w-md sm:!h-12 px-5 sm:px-4 bg-white/10 border border-white/30 rounded-sm text-white placeholder:text-white/55 text-[16px] sm:text-[14px] focus:outline-none focus:border-gold transition-colors min-w-0 box-border leading-normal m-0"
+              style={{ height: '64px', lineHeight: '64px' }}
+              className="appearance-none flex-1 w-full md:max-w-md sm:!h-12 sm:!leading-normal px-5 sm:px-4 bg-white/10 border border-white/30 rounded-sm text-white placeholder:text-white/55 text-[16px] sm:text-[14px] focus:outline-none focus:border-gold transition-colors min-w-0 box-border m-0"
               required
             />
             <button
               type="submit"
               disabled={loading}
-              style={{ height: '56px' }}
+              style={{ height: '64px' }}
               className="sm:!h-12 px-6 sm:px-7 bg-gold text-brand font-semibold tracking-[0.18em] uppercase text-[12px] rounded-sm hover:bg-gold-light transition-colors disabled:opacity-60 whitespace-nowrap w-full sm:w-auto box-border flex-shrink-0"
             >
               {loading ? 'Sending…' : 'Sign Up'}

@@ -13,6 +13,12 @@ export interface ProductVariant {
   selectedOptions: { name: string; value: string }[];
 }
 
+export interface ScentNotes {
+  top: string[];
+  heart: string[];
+  base: string[];
+}
+
 export interface Product {
   id: string;
   handle: string;
@@ -26,6 +32,12 @@ export interface Product {
   inspiredBy?: string;
   tags: string[];
   isNew?: boolean;
+  rating?: number;        // 0–5, e.g. 4.8
+  reviewCount?: number;
+  inventory?: number;     // total stock; <=10 triggers Low Stock badge
+  notes?: ScentNotes;
+  longevity?: number;     // 1–5 scale (1=light, 5=very long)
+  sillage?: number;       // 1–5 scale (1=intimate, 5=projects strong)
 }
 
 export interface Category {

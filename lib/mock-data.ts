@@ -80,7 +80,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 26,
     currencyCode: 'USD',
     images: [
-      { url: img('1610461888750-10bfc601b874'), altText: 'Citrus Lane bottle', width: 1200, height: 1500 },
+      { url: '/images/citrus_lane.png', altText: 'Citrus Lane bottle', width: 1200, height: 1500 },
       { url: img('1615634260167-c8cdede054de'), altText: 'Citrus Lane lifestyle', width: 1200, height: 1500 },
       { url: img('1592945403244-b3fbafd7f539'), altText: 'Citrus Lane detail', width: 1200, height: 1500 },
       { url: img('1594035910387-fea47794261f'), altText: 'Citrus Lane close', width: 1200, height: 1500 },
@@ -150,7 +150,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 42,
     currencyCode: 'USD',
     images: [
-      { url: img('1541643600914-78b084683601'), altText: 'Oud Velvet', width: 1200, height: 1500 },
+      { url: '/images/oud_velvet.png', altText: 'Oud Velvet', width: 1200, height: 1500 },
       { url: img('1610461888750-10bfc601b874'), altText: 'Oud Velvet close', width: 1200, height: 1500 },
       { url: img('1594035910387-fea47794261f'), altText: 'Oud Velvet lifestyle', width: 1200, height: 1500 },
       { url: img('1592945403244-b3fbafd7f539'), altText: 'Oud Velvet detail', width: 1200, height: 1500 },
@@ -241,7 +241,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 38,
     currencyCode: 'USD',
     images: [
-      { url: img('1541643600914-78b084683601'), altText: 'Leather Tobacco', width: 1200, height: 1500 },
+      { url: '/images/leather_tobacco.png', altText: 'Leather Tobacco', width: 1200, height: 1500 },
       { url: img('1610461888750-10bfc601b874'), altText: 'Leather Tobacco close', width: 1200, height: 1500 },
       { url: img('1615634260167-c8cdede054de'), altText: 'Leather Tobacco lifestyle', width: 1200, height: 1500 },
       { url: img('1594035910387-fea47794261f'), altText: 'Leather Tobacco detail', width: 1200, height: 1500 },
@@ -303,13 +303,121 @@ export const MOCK_PRODUCTS: Product[] = [
   },
 ];
 
+/* ── Product enrichment: ratings, inventory, notes, longevity, sillage ──
+   Layered as a post-process so the core MOCK_PRODUCTS list stays compact.
+   Stock count <= 8 triggers the Low Stock badge in the ProductCard. */
+const PRODUCT_META: Record<string, Partial<Product>> = {
+  'muted-forest': {
+    rating: 4.8, reviewCount: 142, inventory: 24, longevity: 4, sillage: 3,
+    notes: {
+      top: ['Bergamot', 'Pink Pepper', 'Cardamom'],
+      heart: ['Vetiver', 'Cedarwood', 'Sandalwood'],
+      base: ['Ancient Moss', 'Amber', 'Patchouli'],
+    },
+  },
+  'vanilla-ember': {
+    rating: 4.9, reviewCount: 287, inventory: 6, longevity: 5, sillage: 4,
+    notes: {
+      top: ['Burnt Sugar', 'Pink Pepper', 'Bergamot'],
+      heart: ['Bourbon Vanilla', 'Chestnut', 'Heliotrope'],
+      base: ['Smoky Sandalwood', 'Caramelised Amber', 'Tonka Bean'],
+    },
+  },
+  'citrus-lane': {
+    rating: 4.6, reviewCount: 76, inventory: 32, longevity: 3, sillage: 3,
+    notes: {
+      top: ['Sicilian Bergamot', 'Pink Grapefruit', 'Lemon Zest'],
+      heart: ['Mandarin', 'Petitgrain', 'Neroli'],
+      base: ['Clean Cedar', 'White Musk', 'Vetiver'],
+    },
+  },
+  'rose-noir': {
+    rating: 4.9, reviewCount: 198, inventory: 14, longevity: 5, sillage: 4,
+    notes: {
+      top: ['Saffron', 'Black Pepper', 'Bergamot'],
+      heart: ['Bulgarian Damascena Rose', 'Jasmine Sambac', 'Ylang Ylang'],
+      base: ['Oud', 'Ambroxan', 'Patchouli'],
+    },
+  },
+  'amber-dusk': {
+    rating: 4.7, reviewCount: 113, inventory: 7, longevity: 5, sillage: 4,
+    notes: {
+      top: ['Cardamom', 'Pink Pepper', 'Orange Blossom'],
+      heart: ['Resinous Amber', 'Benzoin', 'Vanilla'],
+      base: ['Tonka Bean', 'White Musk', 'Skin Accord'],
+    },
+  },
+  'oud-velvet': {
+    rating: 4.9, reviewCount: 156, inventory: 9, longevity: 5, sillage: 5,
+    notes: {
+      top: ['Saffron', 'Cinnamon', 'Bergamot'],
+      heart: ['Smoky Agarwood (Oud)', 'Leather', 'Tobacco Leaf'],
+      base: ['Patchouli', 'Sandalwood', 'Black Amber'],
+    },
+  },
+  'jasmine-noir': {
+    rating: 4.7, reviewCount: 89, inventory: 18, longevity: 4, sillage: 4,
+    notes: {
+      top: ['Black Pepper', 'Bergamot', 'Bitter Orange'],
+      heart: ['Night-Blooming Jasmine', 'Tuberose', 'Gardenia'],
+      base: ['Black Truffle', 'Patchouli', 'Vetiver'],
+    },
+  },
+  'sea-fig': {
+    rating: 4.5, reviewCount: 64, inventory: 41, longevity: 3, sillage: 3,
+    notes: {
+      top: ['Salt Air', 'Bergamot', 'Marine Accord'],
+      heart: ['Fig Leaf', 'Coconut Milk', 'Heliotrope'],
+      base: ['Warm Sand', 'White Cedar', 'Driftwood'],
+    },
+  },
+  'bergamot-cardamom': {
+    rating: 4.6, reviewCount: 71, inventory: 22, longevity: 4, sillage: 3,
+    notes: {
+      top: ['Sicilian Bergamot', 'Green Cardamom', 'Pink Pepper'],
+      heart: ['Lavender', 'Geranium', 'Rosemary'],
+      base: ['Vetiver', 'White Amber', 'Tonka'],
+    },
+  },
+  'leather-tobacco': {
+    rating: 4.8, reviewCount: 134, inventory: 8, longevity: 5, sillage: 5,
+    notes: {
+      top: ['Bergamot', 'Spiced Rum', 'Cinnamon'],
+      heart: ['Cured Tobacco Leaf', 'Smoky Leather', 'Cocoa'],
+      base: ['Patchouli', 'Sandalwood', 'Dry Vetiver'],
+    },
+  },
+  'white-musk-pear': {
+    rating: 4.5, reviewCount: 58, inventory: 29, longevity: 3, sillage: 2,
+    notes: {
+      top: ['Anjou Pear', 'Bergamot', 'Pink Berries'],
+      heart: ['Freesia', 'Magnolia', 'Iris'],
+      base: ['White Musk', 'Clean Cedar', 'Skin Accord'],
+    },
+  },
+  'saffron-honey': {
+    rating: 4.9, reviewCount: 221, inventory: 5, longevity: 5, sillage: 4,
+    notes: {
+      top: ['Saffron Threads', 'Pink Pepper', 'Honeycomb'],
+      heart: ['Orange Blossom Honey', 'Jasmine Absolute', 'Iris'],
+      base: ['Sandalwood', 'Amber', 'Tonka Bean'],
+    },
+  },
+};
+
+// Apply enrichment to every product
+MOCK_PRODUCTS.forEach((p) => {
+  const meta = PRODUCT_META[p.handle];
+  if (meta) Object.assign(p, meta);
+});
+
 export const MOCK_CATEGORIES: Category[] = [
   { name: "Women's Scents",  slug: 'womens',      imageUrl: '/images/category_womens_fragrance_retry_1778781640503.png' },
   { name: "Men's Scents",    slug: 'mens',        imageUrl: '/images/category_mens_fragrance_1778780026029.png' },
   { name: 'Unisex',          slug: 'unisex',      imageUrl: '/images/category_unisex_fragrance_1778781036963.png' },
   { name: 'Oud & Oriental',  slug: 'oud',         imageUrl: '/images/category_oud_oriental_fragrance_1778781746608.png' },
-  { name: 'Home Fragrance',  slug: 'home',        imageUrl: img('1594035910387-fea47794261f', 800, 1000) },
-  { name: 'Bottles & Accessories',  slug: 'accessories', imageUrl: img('1541643600914-78b084683601', 800, 1000) },
+  { name: 'Home Fragrance',  slug: 'home',        imageUrl: '/images/home_fragrance.png' },
+  { name: 'Bottles & Accessories',  slug: 'accessories', imageUrl: '/images/bottles_accessories.png' },
 ];
 
 export const MOCK_SCENT_STORIES: ScentStoryData[] = [

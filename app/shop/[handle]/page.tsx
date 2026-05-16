@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import PDPGallery from '@/components/pdp/PDPGallery';
 import PDPInfo from '@/components/pdp/PDPInfo';
+import ScentIntelligence from '@/components/pdp/ScentIntelligence';
 import EditorialTagline from '@/components/pdp/EditorialTagline';
 import EditorialHero from '@/components/pdp/EditorialHero';
 import ProductStory from '@/components/pdp/ProductStory';
@@ -83,6 +84,8 @@ export default async function PDPPage({ params }: PDPProps) {
           </div>
         </div>
       </section>
+
+      <ScentIntelligence product={product} />
 
       <EditorialTagline
         eyebrow="Signature Experience"

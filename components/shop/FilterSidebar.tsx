@@ -68,9 +68,9 @@ export default function FilterSidebar() {
         {hasFilters && (
           <button
             onClick={clearAll}
-            className="flex items-center gap-1 text-xs text-muted hover:text-cta transition-colors"
+            className="flex items-center gap-1 text-[11px] tracking-[0.14em] uppercase text-cta hover:text-cta-hover transition-colors font-semibold border-b border-cta/40 hover:border-cta-hover pb-0.5"
           >
-            <X size={12} /> Clear all
+            <X size={12} /> Clear All
           </button>
         )}
       </div>

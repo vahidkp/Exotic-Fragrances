@@ -4,6 +4,7 @@ import FilterSidebar from '@/components/shop/FilterSidebar';
 import SortBar from '@/components/shop/SortBar';
 import ProductGrid from '@/components/shop/ProductGrid';
 import ScentDiscoveryBanner from '@/components/shop/ScentDiscoveryBanner';
+import ActiveFilters from '@/components/shop/ActiveFilters';
 import { getProducts } from '@/lib/shopify';
 import type { Metadata } from 'next';
 import type { Product } from '@/types';
@@ -110,6 +111,9 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           <div className="flex-1 min-w-0 w-full">
             <Suspense fallback={null}>
               <SortBar total={filtered.length} />
+            </Suspense>
+            <Suspense fallback={null}>
+              <ActiveFilters />
             </Suspense>
             <ScentDiscoveryBanner />
             <ProductGrid products={filtered} />
