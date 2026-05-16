@@ -80,7 +80,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 26,
     currencyCode: 'USD',
     images: [
-      { url: '/images/citrus_lane.png', altText: 'Citrus Lane bottle', width: 1200, height: 1500 },
+      { url: '/images/scent_muted_forest.png', altText: 'Citrus Lane bottle', width: 1200, height: 1500 },
       { url: img('1615634260167-c8cdede054de'), altText: 'Citrus Lane lifestyle', width: 1200, height: 1500 },
       { url: img('1592945403244-b3fbafd7f539'), altText: 'Citrus Lane detail', width: 1200, height: 1500 },
       { url: img('1594035910387-fea47794261f'), altText: 'Citrus Lane close', width: 1200, height: 1500 },
@@ -150,7 +150,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 42,
     currencyCode: 'USD',
     images: [
-      { url: '/images/oud_velvet.png', altText: 'Oud Velvet', width: 1200, height: 1500 },
+      { url: '/images/category_oud_oriental_fragrance_1778781746608.png', altText: 'Oud Velvet', width: 1200, height: 1500 },
       { url: img('1610461888750-10bfc601b874'), altText: 'Oud Velvet close', width: 1200, height: 1500 },
       { url: img('1594035910387-fea47794261f'), altText: 'Oud Velvet lifestyle', width: 1200, height: 1500 },
       { url: img('1592945403244-b3fbafd7f539'), altText: 'Oud Velvet detail', width: 1200, height: 1500 },
@@ -241,7 +241,7 @@ export const MOCK_PRODUCTS: Product[] = [
     price: 38,
     currencyCode: 'USD',
     images: [
-      { url: '/images/leather_tobacco.png', altText: 'Leather Tobacco', width: 1200, height: 1500 },
+      { url: '/images/collection_bottles_amber.png', altText: 'Leather Tobacco', width: 1200, height: 1500 },
       { url: img('1610461888750-10bfc601b874'), altText: 'Leather Tobacco close', width: 1200, height: 1500 },
       { url: img('1615634260167-c8cdede054de'), altText: 'Leather Tobacco lifestyle', width: 1200, height: 1500 },
       { url: img('1594035910387-fea47794261f'), altText: 'Leather Tobacco detail', width: 1200, height: 1500 },
@@ -416,8 +416,8 @@ export const MOCK_CATEGORIES: Category[] = [
   { name: "Men's Scents",    slug: 'mens',        imageUrl: '/images/category_mens_fragrance_1778780026029.png' },
   { name: 'Unisex',          slug: 'unisex',      imageUrl: '/images/category_unisex_fragrance_1778781036963.png' },
   { name: 'Oud & Oriental',  slug: 'oud',         imageUrl: '/images/category_oud_oriental_fragrance_1778781746608.png' },
-  { name: 'Home Fragrance',  slug: 'home',        imageUrl: '/images/home_fragrance.png' },
-  { name: 'Bottles & Accessories',  slug: 'accessories', imageUrl: '/images/bottles_accessories.png' },
+  { name: 'Home Fragrance',  slug: 'home',        imageUrl: '/images/shop_header_final.png' },
+  { name: 'Bottles & Accessories',  slug: 'accessories', imageUrl: '/images/homepage_hero_luxury_fragrance_1778779966636.png' },
 ];
 
 export const MOCK_SCENT_STORIES: ScentStoryData[] = [
