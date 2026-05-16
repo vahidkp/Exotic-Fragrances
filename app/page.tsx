@@ -5,6 +5,7 @@ import ScentStory from '@/components/homepage/ScentStory';
 import BestsellerCarousel from '@/components/homepage/BestsellerCarousel';
 import WhyUs from '@/components/homepage/WhyUs';
 import Testimonials from '@/components/homepage/Testimonials';
+import FAQ from '@/components/homepage/FAQ';
 import WholesaleModule from '@/components/homepage/WholesaleModule';
 import InstagramStrip from '@/components/homepage/InstagramStrip';
 import NewsletterSection from '@/components/homepage/NewsletterSection';
@@ -35,6 +36,7 @@ export default async function HomePage() {
       <BestsellerCarousel products={products} />
       <WhyUs />
       <Testimonials />
+      <FAQ />
       <WholesaleModule />
       <InstagramStrip />
       <NewsletterSection />
