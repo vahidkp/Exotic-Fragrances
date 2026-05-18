@@ -31,7 +31,7 @@ export default function HeroSection() {
         transition={{ duration: 12, ease: 'easeOut' }}
       >
         <Image
-          src="/images/hero_final.jpg"
+          src="/images/collection_bottles_amber.png"
           alt="Exotic Fragrances — luxury fragrance oil composition"
           fill
           priority

@@ -416,7 +416,7 @@ export const MOCK_CATEGORIES: Category[] = [
   { name: "Men's Scents",    slug: 'mens',        imageUrl: '/images/category_mens_fragrance_1778780026029.png' },
   { name: 'Unisex',          slug: 'unisex',      imageUrl: '/images/category_unisex_fragrance_1778781036963.png' },
   { name: 'Oud & Oriental',  slug: 'oud',         imageUrl: '/images/category_oud_oriental_fragrance_1778781746608.png' },
-  { name: 'Home Fragrance',  slug: 'home',        imageUrl: '/images/shop_header_final.png' },
+  { name: 'Home Fragrance',  slug: 'home',        imageUrl: '/images/shop_header_final_eclat.png' },
   { name: 'Bottles & Accessories',  slug: 'accessories', imageUrl: '/images/homepage_hero_luxury_fragrance_1778779966636.png' },
 ];
 
