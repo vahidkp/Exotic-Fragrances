@@ -1,28 +1,29 @@
 import { FadeUp, StaggerGroup, StaggerItem } from '@/components/shared/Animated';
-import LottieIcon from '@/components/shared/LottieIcon';
-import bubbles from '@/lib/lottie/bubbles.json';
-import orbit from '@/lib/lottie/orbit.json';
-import arrowDown from '@/lib/lottie/arrow-down.json';
-import truck from '@/lib/lottie/truck.json';
+import {
+  DropletIcon,
+  BottlesIcon,
+  PriceTagIcon,
+  TruckIcon,
+} from '@/components/shared/WhyUsIcons';
 
 const ITEMS = [
   {
-    lottie: bubbles,
+    Icon: DropletIcon,
     heading: 'Grade A Quality',
     body: 'Pure, undiluted fragrance oils — the same grade used by leading perfume houses.',
   },
   {
-    lottie: orbit,
+    Icon: BottlesIcon,
     heading: '1,000+ Scents',
     body: 'One of the largest catalogues of fragrance, body and essential oils in the USA.',
   },
   {
-    lottie: arrowDown,
+    Icon: PriceTagIcon,
     heading: 'Below Wholesale',
     body: 'No middleman, no mark-up. Designer-inspired fragrances at prices that make every scent accessible.',
   },
   {
-    lottie: truck,
+    Icon: TruckIcon,
     heading: 'Fast USA Shipping',
     body: 'Every order processed and dispatched within 24 hours — reliable delivery across all fifty states.',
   },
@@ -42,12 +43,12 @@ export default function WhyUs() {
         </FadeUp>
 
         <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
-          {ITEMS.map(({ lottie, heading, body }) => (
+          {ITEMS.map(({ Icon, heading, body }) => (
             <StaggerItem key={heading}>
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4 min-w-0">
                 <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center bg-white rounded-full shadow-card">
                   <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20">
-                    <LottieIcon data={lottie} />
+                    <Icon className="w-full h-full" />
                   </div>
                 </div>
                 <h3 className="font-display text-[15px] sm:text-[18px] md:text-heading-lg text-brand">{heading}</h3>
