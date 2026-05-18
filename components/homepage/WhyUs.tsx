@@ -41,7 +41,7 @@ export default function WhyUs() {
           </h2>
         </FadeUp>
 
-        <StaggerGroup className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
+        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10">
           {ITEMS.map(({ lottie, heading, body }) => (
             <StaggerItem key={heading}>
               <div className="flex flex-col items-center text-center gap-3 sm:gap-4 min-w-0">
