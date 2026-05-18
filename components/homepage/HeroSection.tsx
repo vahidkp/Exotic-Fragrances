@@ -88,9 +88,9 @@ export default function HeroSection() {
               </Link>
               <Link
                 href="/wholesale"
-                className="text-[12px] sm:text-[13px] text-white/90 underline underline-offset-[6px] hover:text-white transition-colors self-start sm:self-auto"
+                className="inline-flex items-center justify-center border border-white/30 hover:border-white text-white text-[11px] sm:text-[12px] tracking-[0.16em] sm:tracking-[0.2em] uppercase font-semibold px-6 sm:px-8 h-12 sm:h-14 rounded-sm hover:bg-white/10 transition-all duration-300 w-full sm:w-auto sm:min-w-[230px] max-w-full"
               >
-                Wholesale Enquiry →
+                Wholesale Enquiry
               </Link>
             </motion.div>
           </div>
